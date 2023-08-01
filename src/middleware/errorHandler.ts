@@ -70,7 +70,3 @@ export function errorhandler(
         }
     }
 }
-
-// export default function (error:err, req: Request, res: Response, next: NextFunction) {
-//   return errorhandler(error, req, res);
-// }
