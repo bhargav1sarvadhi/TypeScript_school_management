@@ -73,38 +73,38 @@ school-management-system/
 ```
 |-- src/
 |   |-- controllers/      # Contains the route handlers (controllers) for different API endpoints
-|   |   |-- userController.ts        # Controller for user-related endpoints (e.g., register, login)
-|   |   |-- classController.ts       # Controller for class management endpoints
-|   |   |-- attendanceController.ts  # Controller for attendance management endpoints
-|   |   |-- lectureController.ts     # Controller for lecture scheduling endpoints
-|   |   |-- reportController.ts      # Controller for reporting issues with students
+|   |   |-- UserController.ts        # Controller for user-related endpoints (e.g., register, login)
+|   |   |-- ClassController.ts       # Controller for class management endpoints
+|   |   |-- AttendanceController.ts  # Controller for attendance management endpoints
+|   |   |-- SheduleController.ts     # Controller for lecture scheduling endpoints
+|   |   |-- ReportController.ts      # Controller for reporting issues with students
 |   |
 |   |-- routes/           # Contains the API route definitions
 |   |   |-- userRoutes.ts             # Route definitions for user-related endpoints
 |   |   |-- classRoutes.ts            # Route definitions for class management endpoints
 |   |   |-- attendanceRoutes.ts       # Route definitions for attendance management endpoints
-|   |   |-- lectureRoutes.ts          # Route definitions for lecture scheduling endpoints
+|   |   |-- sheduleRoutes.ts          # Route definitions for lecture scheduling endpoints
 |   |   |-- reportRoutes.ts           # Route definitions for reporting issues with students
 |   |
 |   |-- models/           # Contains the database models and schemas
-|   |   |-- User.ts                   # Model for user schema
-|   |   |-- Class.ts                  # Model for class schema
-|   |   |-- Attendance.ts             # Model for attendance schema
-|   |   |-- Lecture.ts                # Model for lecture schema
-|   |   |-- Report.ts                 # Model for report schema
+|   |   |-- UserModel.ts                   # Model for user schema
+|   |   |-- classModel.ts                  # Model for class schema
+|   |   |-- attendanceModel.ts             # Model for attendance schema
+|   |   |-- sheduleModel.ts                # Model for lecture schema
+|   |   |-- reportModel.ts                 # Model for report schema
 |   |
 |   |-- middleware/       # Contains custom middleware functions
 |   |   |-- authMiddleware.ts         # Authentication middleware
-|   |   |-- roleMiddleware.ts         # Role-based access control middleware
+|   |   |-- checkPermission.ts         # Role-based access control middleware
 |   |
 |   |-- utils/            # Contains utility functions and helper modules
-|   |   |-- passwordUtils.ts          # Utility functions for password hashing
-|   |   |-- dateUtils.ts              # Utility functions for handling date and time
+|   |   |-- interface.ts          # Utility functions for Interface define typescript
+|   |   |-- dateFormate.ts              # Utility functions for handling date and time
 |   |
 |   |
 |   |-- config/           # Configuration files for the application
-|   |   |-- database.ts   # Database connection configuration
-|   |   |-- auth.ts       # Authentication middleware and JWT configuration
+|   |   |-- db.ts   # Database connection configuration
+|   |   |-- passwordJwt.ts       # Authentication middleware and JWT configuration
 |   |
 |   |-- app.ts            # Entry point of the back-end application
 |-- package.json          # Node.js project configuration file

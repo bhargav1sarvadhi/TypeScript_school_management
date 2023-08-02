@@ -38,7 +38,16 @@ export class BaseController {
         }
     }
     async bulkinsert(req, res, next) {
-        const bulkinsert = await this.model.bulkCreate(req.body);
+        const user = req.body;
+        const userHashed = user.map(val => {
+            if (val.password) {
+                const hashpass = hashSync(val.password, 12);
+                val.password = hashpass;
+                return val;
+            }
+            return val;
+        });
+        const bulkinsert = await this.model.bulkCreate(userHashed);
         return res.status(201).json({ success: true, StatusCode: 201, data: bulkinsert, message: 'Data Insert Successfully' });
     }
 }
