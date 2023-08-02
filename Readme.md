@@ -53,6 +53,7 @@ git clone https://github.com/bhargav1sarvadhi/TypeScript_school_management.git
 | Endpoint                            | Method | Description                                                             | Authorization   |
 |-------------------------------------|--------|-------------------------------------------------------------------------|------------------|
 | /auth/singup                       | POST   | Register a new user with the application.                               | Not required     |
+| /auth/singup/bulkcreate                      | POST   | Register a new user with bulk the application.                               | Not required     |
 | /auth/login                          | POST   | Log in an existing user.                                                | Not required     |
 | /class                        | POST   | Create a new class.                                                     | Bearer Token (Principal role required) |
 | /class                        | GET    | Get a list of all classes.                                              | Bearer Token (Principal role required) |

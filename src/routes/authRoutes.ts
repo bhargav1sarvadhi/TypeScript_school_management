@@ -13,7 +13,7 @@ authRoutes.post(
     tryCatchMiddleware(controller.create.bind(controller)),
 );
 authRoutes.post(
-    '/signup/bulkinset',
+    '/signup/bulkcreate',
     tryCatchMiddleware(controller.bulkinsert.bind(controller)),
 );
 authRoutes.post('/login', tryCatchMiddleware(authController.login));
