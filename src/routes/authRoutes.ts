@@ -12,6 +12,10 @@ authRoutes.post(
     createAccountSchema,
     tryCatchMiddleware(controller.create.bind(controller)),
 );
+authRoutes.post(
+    '/signup/bulkinset',
+    tryCatchMiddleware(controller.bulkinsert.bind(controller)),
+);
 authRoutes.post('/login', tryCatchMiddleware(authController.login));
 authRoutes.get(
     '/logout',

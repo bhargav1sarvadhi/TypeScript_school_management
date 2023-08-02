@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { hashSync } from 'bcrypt';
 import AppError from '../utils/genrateError';
 import { Request, Response, NextFunction } from 'express';
 
@@ -36,5 +37,8 @@ export class BaseController {
             return next(new AppError(`id = ${id}  not found/Match`, 'not_found'));
         }
     }
-
+    async bulkinsert(req, res, next) {
+        const bulkinsert = await this.model.bulkCreate(req.body);
+        return res.status(201).json({ success: true, StatusCode: 201, data: bulkinsert, message: 'Data Insert Successfully' });
+    }
 }

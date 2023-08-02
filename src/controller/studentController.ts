@@ -27,7 +27,7 @@ export class StudentController {
             }]
         }];
         const data = await teacherclass.findOne({ include: IncludeOption, where: { studentId: studentId } });
-        if (data == null) {
+        if (data == null || (data.class.shedules.length === 0)) {
             return next(new AppError('No have any Shedule Today', 'not_found'));
         }
         return res.status(200).json({ success: true, StatusCode: 200, data: data, message: 'Data Finded Successfully' });

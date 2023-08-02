@@ -21,4 +21,4 @@ export const db = {
     teacherClasstModel,
 };
 
-// db.sequelize.sync({ force: false });
+// db.sequelize.sync({ force: true });
