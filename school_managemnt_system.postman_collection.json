@@ -1,0 +1,1069 @@
+{
+	"info": {
+		"_postman_id": "3edd5b82-f227-4bb8-84e0-daf1f293265f",
+		"name": "school_managemnt_system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27852364"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "singup",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userName",
+									"value": "teacher2",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "teacher2@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "Teacher",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Abc@1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/auth/signup",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();",
+									"pm.environment.set('schoolToken', response.data);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "sophia.roberts@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Wxy@6543",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/auth/login",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LogOut",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/auth/logout",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BulkInsert Users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"userName\": \"michael_adams\",\n    \"email\": \"michael.adams@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Lmn@0987\"\n  },\n  {\n    \"userName\": \"sophia_roberts\",\n    \"email\": \"sophia.roberts@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Wxy@6543\"\n  },\n  {\n    \"userName\": \"david_miller\",\n    \"email\": \"david.miller@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Zab@7890\"\n  },\n  {\n    \"userName\": \"olivia_harris\",\n    \"email\": \"olivia.harris@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Mno@2345\"\n  },\n  {\n    \"userName\": \"william_wilson\",\n    \"email\": \"william.wilson@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Fgh@8765\"\n  },\n  {\n    \"userName\": \"emily_brown\",\n    \"email\": \"emily.brown@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Klm@5432\"\n  },\n  {\n    \"userName\": \"james_anderson\",\n    \"email\": \"james.anderson@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Ijk@2109\"\n  },\n  {\n    \"userName\": \"ava_jones\",\n    \"email\": \"ava.jones@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Def@1098\"\n  },\n  {\n    \"userName\": \"logan_martin\",\n    \"email\": \"logan.martin@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Rst@5678\"\n  },\n  {\n    \"userName\": \"mia_jackson\",\n    \"email\": \"mia.jackson@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Cde@9876\"\n  },\n  {\n    \"userName\": \"alexander_lewis\",\n    \"email\": \"alexander.lewis@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Uvw@8765\"\n  },\n  {\n    \"userName\": \"ava_taylor\",\n    \"email\": \"ava.taylor@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Opq@7654\"\n  },\n  {\n    \"userName\": \"mason_white\",\n    \"email\": \"mason.white@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Tuv@6543\"\n  },\n  {\n    \"userName\": \"harper_smith\",\n    \"email\": \"harper.smith@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Pqr@5432\"\n  },\n  {\n    \"userName\": \"benjamin_brown\",\n    \"email\": \"benjamin.brown@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Hij@4321\"\n  },\n  {\n    \"userName\": \"scarlett_davis\",\n    \"email\": \"scarlett.davis@example.com\",\n    \"role\": \"Student\",\n    \"password\": \"Efg@3210\"\n  }\n]\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{school}}/auth/signup/bulkcreate",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"auth",
+								"signup",
+								"bulkcreate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/user/3",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userName",
+									"value": "mayank22",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "bha229183@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "Teacher",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/user/5",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"user",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/user",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Class",
+			"item": [
+				{
+					"name": "add Class",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "className",
+									"value": "chem",
+									"type": "text"
+								},
+								{
+									"key": "grade",
+									"value": "12-D",
+									"type": "text"
+								},
+								{
+									"key": "classTeacher",
+									"value": "7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/class",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"class"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Class",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/user",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Class",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/user/3",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update class",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "className",
+									"value": "tt",
+									"type": "text"
+								},
+								{
+									"key": "grade",
+									"value": "tt",
+									"type": "text"
+								},
+								{
+									"key": "classTeacher",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/class/1",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"class",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Attendance",
+			"item": [
+				{
+					"name": "add attendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "studentId",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2023-07-29",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Absent",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/attendance",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"attendance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get atendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/attendance",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"attendance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete attendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/attendance/4",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"attendance",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update attendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "studentId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2023-07-31",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Absent",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/attendance/3",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"attendance",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shedule",
+			"item": [
+				{
+					"name": "add shedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "classId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "weekday",
+									"value": "Wensday",
+									"type": "text"
+								},
+								{
+									"key": "time",
+									"value": "9:00",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2023-08-02",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/shedule",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"shedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get shedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/attendance",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"attendance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete attendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/shedule/4",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"shedule",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update shedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "classId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "weekday",
+									"value": "Friday",
+									"type": "text"
+								},
+								{
+									"key": "time",
+									"value": "2:00",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2023-07-28",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/shedule/3",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"shedule",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "add Report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "studentId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "this is  first report",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/report",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/report",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/report/",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"report",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "studentId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "done",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/report/21",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"report",
+								"21"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teacher class Access",
+			"item": [
+				{
+					"name": "addt eacher class",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "classId",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "studentId",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/teacherclass",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"teacherclass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get teacher class",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/teacherclass",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"teacherclass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete teacherclass",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/teacherclass/3",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"teacherclass",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update report",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "classId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "studentId",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{school}}/teacherclass/2",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"teacherclass",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "get student shedule",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{schoolToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{school}}/student/shedule",
+							"host": [
+								"{{school}}"
+							],
+							"path": [
+								"student",
+								"shedule"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
