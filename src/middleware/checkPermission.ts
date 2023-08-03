@@ -30,5 +30,16 @@ const Onlystudent = role => {
         throw new AppError('You have not access.', 'unauthorized');
     };
 };
-
-export { Roles, checkPermission ,Onlystudent };
+const OnlyTeacher = role => {
+    return (req, res, next) => {
+        const userRole = req.user.role;
+        if (!userRole) {
+            throw new AppError('You have not access.', 'unauthorized');
+        }
+        if (userRole === role) {
+            return next();
+        }
+        throw new AppError('You have not access.', 'unauthorized');
+    };
+};
+export { Roles, checkPermission ,Onlystudent,OnlyTeacher };

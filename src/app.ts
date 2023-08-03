@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import express from 'express';
 import { Routes } from './routes';
 import dotenv from 'dotenv';
@@ -13,6 +14,7 @@ const port = process.env.PORT_SERVER || 4000;
 
 class App {
     app: express.Application;
+    static instance: any;
     constructor() {
         this.app = express();
         this.app.use(express.urlencoded());
