@@ -1,35 +1,47 @@
-/* eslint-disable max-len */
-/* eslint-disable object-curly-spacing */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { classModel } from '../model/classModel';
+/* eslint-disable max-len */
 import { db } from '../model/index';
-import { sheduleModel } from '../model/seheduleModel';
-import { UserModel } from '../model/userModel';
-import AppError from '../utils/genrateError';
-const teacherclass = db.teacherClasstModel;
+import { AppError, NotificationType, Sendnotification } from '../utils';
+import { BaseController } from './BaseController';
+import { expirescheck } from './userContoller';
+import jwt, { JwtPayload } from 'jsonwebtoken';
+import dotenv from 'dotenv';
+import { WhereOptions } from 'sequelize';
+import { createToken } from '../utils/notificationEmail';
+dotenv.config();
+const studentClasstModel = db.StudentModel;
+const sendnotification = new Sendnotification;
 
-export class StudentController {
-    async shedule(req, res, next) {
-        const { params: { date } } = req;
-        const today = new Date();
-        const Tdate = today.toISOString().split('T')[0];
-        const studentId = req.user.id;
-        const IncludeOption = [{
-            model: UserModel,
-            attributes: ['userName'],
-        }, {
-            model: classModel,
-            attributes: [ 'className', 'grade' ],
-            include: [{
-                model: sheduleModel,
-                attributes: [ 'date', 'time','weekday' ],
-                where: { date: date || Tdate }
-            }]
-        }];
-        const data = await teacherclass.findOne({ include: IncludeOption, where: { studentId: studentId } });
-        if (data == null || (data.class.shedules.length === 0)) {
-            return next(new AppError('No have any Shedule Today', 'not_found'));
+export class StudentsController extends BaseController {
+    constructor() {
+        super(studentClasstModel);
+    }
+
+    async studentsingup(req, res, next) {
+        const data = await studentClasstModel.create(req.body);
+        if (data) {
+            const token = createToken(data.id);
+            sendnotification.Send(NotificationType.INVITE,{ emailAddress: data.email, message: `Hello ${data.firstname}`,id: data.id ,link: `http://localhost:8000/newuser/student/password-generate/${data.id}/${token}` });
         }
-        return res.status(200).json({ success: true, StatusCode: 200, data: data, message: 'Data Finded Successfully' });
+        res.status(201).json({ success: true, StatusCode: 201, data: data, message: 'Data Insert Successfully' });
+    }
+
+    async studentInvite(req, res,next) {
+        const { params: { emailId, token }} = req;
+        expirescheck(token);
+        const decodedToken: JwtPayload = jwt.verify(token, process.env.JWT_SECERET) as JwtPayload;
+        return res.status(200).json({ success: true, StatusCode: 200, message: 'Successfully link opened' });
+    }
+
+    async studentupdatePassword(req, res, next) {
+        const { params: { emailId, token }} = req;
+        console.log(emailId);
+        expirescheck(token);
+        const [updateData] = await studentClasstModel.update(req.body, { where: { id: emailId } as WhereOptions });
+        console.log(updateData);
+        if (updateData === 0) {
+            return next(new AppError(`This id = ${emailId} not found`, 'not_found'));
+        }
+        res.status(200).json({ success: true, StatusCode: 200, data: updateData, message: 'Data Update Successfully' });
     }
 }

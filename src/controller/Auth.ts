@@ -1,14 +1,17 @@
+/* eslint-disable no-var */
+/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response, NextFunction } from 'express';
 import AppError from '../utils/genrateError';
 import * as bcrypt from 'bcrypt';
 import { db } from '../model';
 import jwt from 'jsonwebtoken';
+import { StudentModel } from '../model/studentModel';
 const UserModel = db.UserModel;
 const Token = db.tokenModel;
 
 export class AuthContoller {
-    async login(req: Request, res: Response, next: NextFunction) {
+    async login(req, res, next) {
         const { body: { email, password }} = req;
         const login = await UserModel.findOne({ where: { email }});
         if (!login || !bcrypt.compareSync(password, login.password)) {

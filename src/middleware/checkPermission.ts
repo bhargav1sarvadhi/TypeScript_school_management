@@ -5,41 +5,16 @@ const enum Roles {
   STUDENT = 'Student',
 }
 
-const checkPermission = role => {
-    return (req, res, next) => {
-        const userRole = req.user.role;
-        if (!userRole) {
-            throw new AppError('You have not access.', 'unauthorized');
-        }
-        if (userRole === role || userRole === 'Principal') {
+export default function checkPermission(roles) {
+    return function (req, res, next) {
+        if (Array.isArray(roles)) {
+            if (roles.includes(req.user.role)) {
+                return next();
+            }
+        } else if (req.user.role === roles) {
             return next();
         }
-        throw new AppError('You have not access.', 'unauthorized');
+        throw new AppError('You do not have permission to access this route.', 'Forbidden');
     };
-};
-
-const Onlystudent = role => {
-    return (req, res, next) => {
-        const userRole = req.user.role;
-        if (!userRole) {
-            throw new AppError('You have not access.', 'unauthorized');
-        }
-        if (userRole === role) {
-            return next();
-        }
-        throw new AppError('You have not access.', 'unauthorized');
-    };
-};
-const OnlyTeacher = role => {
-    return (req, res, next) => {
-        const userRole = req.user.role;
-        if (!userRole) {
-            throw new AppError('You have not access.', 'unauthorized');
-        }
-        if (userRole === role) {
-            return next();
-        }
-        throw new AppError('You have not access.', 'unauthorized');
-    };
-};
-export { Roles, checkPermission ,Onlystudent,OnlyTeacher };
+}
+export { Roles, checkPermission };

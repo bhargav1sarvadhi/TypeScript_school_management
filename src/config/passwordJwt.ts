@@ -1,6 +1,10 @@
 import passport from 'passport';
 import { db } from '../model';
 import passport_jwt from 'passport-jwt';
+// import jwt,{ JwtPayload } from 'jsonwebtoken';
+import dotenv from 'dotenv';
+// import { AppError } from '../utils';
+dotenv.config();
 const UserModel = db.UserModel;
 const TokenModel = db.tokenModel;
 const JwtStrategy = passport_jwt.Strategy,
@@ -31,3 +35,17 @@ passport.use(
         }
     }),
 );
+
+// export const validateInviteLink = (req,res,next,token) => {
+//     try {
+//         const decodedToken: JwtPayload = jwt.verify(token, process.env.JWT_SECERET) as JwtPayload;
+//         if (decodedToken.exp >= Math.floor(Date.now() / 1000)) {
+//             next();
+//         } else {
+//             return next(new AppError('Oops! The link you are trying to access has expired.', 'invalid_request'));
+//         }
+//     } catch (error) {
+//         return next(new AppError('Oops! The link you are trying to access has expired.', 'invalid_request'));
+
+//     }
+// };

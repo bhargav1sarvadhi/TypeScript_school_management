@@ -4,9 +4,31 @@ import Joi from 'joi';
 
 const createAccountSchema = (req, res, next) => {
     const schema = Joi.object({
-        userName: Joi.string().required(),
+        username: Joi.string().required(),
+        firstname: Joi.string().required(),
+        lastname: Joi.string().required(),
+        phone: Joi.string().pattern(/^\+[0-9]{1,}$/).length(13).required().messages({
+            'string.pattern.base': 'please enter valid number using +91',
+            'string.length': 'Please enter 10 digits mobile number'
+        }),
         email: Joi.string().email().required(),
         role: Joi.string().required(),
+        password: Joi.string().min(6).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/).required().messages({
+            'string.pattern.base': 'please valid password number special characters and letters'
+        }),
+    });
+    validateRequest(req, next, schema);
+};
+const studentSchema = (req, res, next) => {
+    const schema = Joi.object({
+        firstname: Joi.string().required(),
+        lastname: Joi.string().required(),
+        grId: Joi.number().required(),
+        phone: Joi.string().pattern(/^\+[0-9]{1,}$/).length(13).required().messages({
+            'string.pattern.base': 'please enter valid number using +91',
+            'string.length': 'Please enter 10 digits mobile number'
+        }),
+        email: Joi.string().email().required(),
         password: Joi.string().min(6).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/).required().messages({
             'string.pattern.base': 'please valid password number special characters and letters'
         }),
@@ -27,12 +49,12 @@ const attendanceSchema = (req, res, next) => {
         date: Joi.date().iso().required(),
         status: Joi.string().required(),
     });
-    validateRequest(req, next, schema);
+    const arrayOfStudentsSchema = Joi.array().items(schema).min(1).required();
+    validateRequest(req, next, arrayOfStudentsSchema);
 };
 const sheduleSchema = (req, res, next) => {
     const schema = Joi.object({
         classId: Joi.number().required(),
-        weekday: Joi.string().required(),
         time: Joi.string().required(),
         date: Joi.date().iso().required(),
     });
@@ -54,6 +76,36 @@ const teacherClassSchema = (req, res, next) => {
     });
     validateRequest(req, next, schema);
 };
+const subjectSchema = (req, res, next) => {
+    const schema = Joi.object({
+        subjectname: Joi.string().required(),
+        teacherId: Joi.number().required(),
+    });
+    validateRequest(req, next, schema);
+};
+const holidaySchema = (req, res, next) => {
+    const schema = Joi.object({
+        holidayname: Joi.string().required(),
+        date: Joi.date().iso().required(),
+    });
+    validateRequest(req, next, schema);
+};
+const leaveSchema = (req, res, next) => {
+    const schema = Joi.object({
+        startdate: Joi.date().iso().required(),
+        enddate: Joi.date().iso().required(),
+        reason: Joi.string().required(),
+    });
+    validateRequest(req, next, schema);
+};
+const updatePasswordSchema = (req, res, next) => {
+    const schema = Joi.object({
+        password: Joi.string().min(6).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/).required().messages({
+            'string.pattern.base': 'please valid password number special characters and letters'
+        }),
+    });
+    validateRequest(req, next, schema);
+};
 
 export {
     createAccountSchema,
@@ -62,4 +114,9 @@ export {
     sheduleSchema,
     reportSchema,
     teacherClassSchema,
+    studentSchema,
+    updatePasswordSchema,
+    subjectSchema,
+    holidaySchema,
+    leaveSchema
 };

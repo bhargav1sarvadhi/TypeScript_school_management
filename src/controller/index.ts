@@ -7,6 +7,24 @@ import { AttendanceController } from './attendanceController';
 import { SheduleController } from './sheduleController';
 import { ReportController } from './reportController';
 import { TeacherclassController } from './teacherClassController';
-import { StudentController } from './studentController';
+import { StudentController } from './studentviewController';
+import { StudentsController } from './studentController';
+import { SubjectController } from './subjectContoller';
+import { HolidayController } from './holidayController';
+import { LeaveController } from './leaveController';
 
-export { BaseController, UserController, AuthContoller, ClassController, AttendanceController, SheduleController, ReportController, TeacherclassController, StudentController };
+export {
+    BaseController,
+    UserController,
+    AuthContoller,
+    ClassController,
+    AttendanceController,
+    SheduleController,
+    ReportController,
+    TeacherclassController,
+    StudentController,
+    StudentsController,
+    SubjectController,
+    HolidayController,
+    LeaveController
+};

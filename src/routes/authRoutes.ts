@@ -10,7 +10,7 @@ const authController = new AuthContoller();
 authRoutes.post(
     '/signup',
     createAccountSchema,
-    tryCatchMiddleware(controller.create.bind(controller)),
+    tryCatchMiddleware(controller.singup),
 );
 authRoutes.post(
     '/signup/bulkcreate',

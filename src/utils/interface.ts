@@ -2,8 +2,21 @@ import { Model } from 'sequelize';
 
 export interface UserAttributes extends Model {
   id: number;
-  userName: string;
+  username: string;
+  firstname: string;
+  lastname: string;
   email: string;
+  phone: string;
+  role: string;
+  password: string;
+}
+export interface Student extends Model {
+  id: number;
+  firstname: string;
+  lastname: string;
+  email: string;
+  grId: number;
+  phone: string;
   role: string;
   password: string;
 }
@@ -30,7 +43,6 @@ export interface Attendance extends Model {
 export interface Shedule extends Model {
   id: number;
   classId: number;
-  weekday: string;
   time: string;
   date: string;
 }
@@ -47,3 +59,22 @@ export interface TeacherClass extends Model {
   classId: number;
   studentId: number;
 }
+export interface Subject extends Model {
+  id: number;
+  subjectname: string;
+  teacherId: number;
+}
+export interface Holiday extends Model {
+  id: number;
+  holidayname: string;
+  date: number;
+}
+
+export interface Leave extends Model {
+  id: number;
+  startdate: number;
+  enddate: number;
+  studentId: number;
+  teacherId: number;
+}
+

@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/db';
 import { Shedule } from '../utils/interface';
 
-export const sheduleModel = sequelize.define<Shedule>('shedule', {
+export const sheduleModel = sequelize.define<Shedule>('schedule', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -16,19 +16,6 @@ export const sheduleModel = sequelize.define<Shedule>('shedule', {
             model: 'classes',
             key: 'id',
         },
-    },
-    weekday: {
-        type: DataTypes.ENUM,
-        allowNull: false,
-        values: [
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Saturday',
-            'Sunday',
-        ],
     },
     time: {
         type: DataTypes.TIME,

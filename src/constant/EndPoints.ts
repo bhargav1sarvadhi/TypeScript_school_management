@@ -6,5 +6,10 @@ export enum ENDPOINT {
   SHEDULE = '/shedule',
   REPORT = '/report',
   TEACHER = '/teacherclass',
+  STUDENTVIEW = '/studentview',
   STUDENT = '/student',
+  NODEMAIL = '/newuser',
+  SUBJECT = '/subject',
+  HOLIDAY = '/holiday',
+  LEAVE = '/leave',
 }

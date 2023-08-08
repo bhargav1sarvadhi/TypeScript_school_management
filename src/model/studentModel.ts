@@ -1,11 +1,10 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/db';
-import { UserAttributes } from '../utils/interface';
+import { Student } from '../utils/interface';
 import { hashSync } from 'bcrypt';
 import AppError from '../utils/genrateError';
-// import { teacherClasstModel } from './teacherClassModel';
 
-export const UserModel = sequelize.define<UserAttributes>('users', {
+export const StudentModel = sequelize.define<Student>('students', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -20,8 +19,8 @@ export const UserModel = sequelize.define<UserAttributes>('users', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    username: {
-        type: DataTypes.STRING,
+    grId: {
+        type: DataTypes.INTEGER,
         unique: true,
         allowNull: false,
     },
@@ -35,8 +34,8 @@ export const UserModel = sequelize.define<UserAttributes>('users', {
         allowNull: false,
     },
     role: {
-        type: DataTypes.ENUM,
-        values: [ 'Principal', 'Teacher' ],
+        type: DataTypes.STRING,
+        defaultValue: 'Student',
         allowNull: false,
     },
     password: {
@@ -57,6 +56,3 @@ export const UserModel = sequelize.define<UserAttributes>('users', {
         },
     },
 });
-
-// UserModel.hasMany(teacherClasstModel, { foreignKey: 'studentId' });
-// teacherClasstModel.belongsTo(UserModel, { foreignKey: 'studentId' });

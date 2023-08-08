@@ -23,7 +23,7 @@ export const teacherClasstModel = sequelize.define<TeacherClass>(
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'users',
+                model: 'students',
                 key: 'id',
             },
         },

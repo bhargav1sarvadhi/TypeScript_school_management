@@ -4,9 +4,13 @@ import { UserModel } from './userModel';
 import { tokenModel } from './tokenModel';
 import { classModel } from './classModel';
 import { attendanceModel } from './attendanceModel';
-import { sheduleModel } from './seheduleModel';
+import { sheduleModel } from './scheduleModel';
 import { reportModel } from './reportingModel';
 import { teacherClasstModel } from './teacherClassModel';
+import { StudentModel } from './studentModel';
+import { subjectModel } from './subjectModel';
+import { holidayModel } from './holidayModel';
+import { LeaveModel } from './leaveModel';
 
 // eslint-disable-next-line max-len
 export const db = {
@@ -19,6 +23,10 @@ export const db = {
     sheduleModel,
     reportModel,
     teacherClasstModel,
+    StudentModel,
+    subjectModel,
+    holidayModel,
+    LeaveModel,
 };
 
-// db.sequelize.sync({ force: true });
+// db.sequelize.sync({ force: false });
