@@ -10,7 +10,7 @@ export const attendanceModel = sequelize.define<Attendance>('attendance', {
         allowNull: false,
     },
     studentId: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
             model: 'students',

@@ -3,6 +3,7 @@
 import { AppError } from '../utils';
 
 /* eslint-disable multiline-ternary */
+
 export function checkvalidationShedule(time, dayOfWeek, teacherStd) {
     const isSaturday = dayOfWeek === 6;
     const isWeekend = dayOfWeek === 0;

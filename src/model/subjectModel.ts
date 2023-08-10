@@ -14,7 +14,7 @@ export const subjectModel = sequelize.define<Subject>('subjects', {
         allowNull: false,
     },
     teacherId: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
             model: 'users',

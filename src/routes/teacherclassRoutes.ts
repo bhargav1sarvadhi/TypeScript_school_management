@@ -7,13 +7,13 @@ import { checkPermission } from '../middleware/checkPermission';
 const controller = new TeacherclassController();
 
 teacherRoutes.post(
-    '/',checkPermission(Roles.TEACHER),
+    '/',checkPermission([Roles.TEACHER]),
     teacherClassSchema,
     tryCatchMiddleware(controller.create.bind(controller)),
 );
-teacherRoutes.delete('/:id',checkPermission(Roles.TEACHER), tryCatchMiddleware(controller.removeStudent));
+teacherRoutes.delete('/:id',checkPermission([Roles.TEACHER]), tryCatchMiddleware(controller.removeStudent));
 teacherRoutes.put(
-    '/:id',checkPermission(Roles.TEACHER),
+    '/:id',checkPermission([Roles.TEACHER]),
     teacherClassSchema,
     tryCatchMiddleware(controller.update.bind(controller)),
 );

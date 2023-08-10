@@ -1,7 +1,6 @@
 import { sequelize } from '../config/db';
 import { Sequelize } from 'sequelize';
 import { UserModel } from './userModel';
-import { tokenModel } from './tokenModel';
 import { classModel } from './classModel';
 import { attendanceModel } from './attendanceModel';
 import { sheduleModel } from './scheduleModel';
@@ -17,7 +16,6 @@ export const db = {
     sequelize,
     Sequelize,
     UserModel,
-    tokenModel,
     classModel,
     attendanceModel,
     sheduleModel,
@@ -29,4 +27,4 @@ export const db = {
     LeaveModel,
 };
 
-// db.sequelize.sync({ force: false });
+// db.sequelize.sync({ force: true });

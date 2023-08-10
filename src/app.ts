@@ -7,7 +7,7 @@ import { logger } from './logger/Logger';
 import { errorhandler } from './middleware/errorHandler';
 import passport from 'passport';
 import './config/passwordJwt';
-
+import session from 'express-session';
 dotenv.config();
 const routes = new Routes();
 const port = process.env.PORT_SERVER || 4000;
@@ -20,6 +20,14 @@ class App {
         this.app.use(express.urlencoded());
         this.app.use(express.json());
         this.app.use(passport.initialize());
+        this.app.use(session({
+            secret: process.env.SESSION_SECERET,
+            resave: false,
+            saveUninitialized: true,
+            cookie: {
+                maxAge: 3600000
+            }
+        }));
         this.app.use('/', routes.getRoutes());
         this.app.listen(port, () => {
             logger.info('server started on port ' + port);

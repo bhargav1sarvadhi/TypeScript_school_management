@@ -12,4 +12,5 @@ export enum ENDPOINT {
   SUBJECT = '/subject',
   HOLIDAY = '/holiday',
   LEAVE = '/leave',
+  API = '/api',
 }

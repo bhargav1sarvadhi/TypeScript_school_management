@@ -8,6 +8,7 @@ import { AppError, NotificationType } from '../utils';
 import { Sendnotification, createToken } from '../utils/notificationEmail';
 import { BaseController } from './BaseController';
 import { WhereOptions } from 'sequelize';
+import { LeaveModel } from '../model/leaveModel';
 const UserModel = db.UserModel;
 const sendnotification = new Sendnotification;
 
@@ -49,4 +50,5 @@ export class UserController extends BaseController {
         }
         res.status(200).json({ success: true, StatusCode: 200, data: updateData, message: 'Data Update Successfully' });
     }
+
 }

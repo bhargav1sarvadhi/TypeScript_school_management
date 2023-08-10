@@ -1,9 +1,11 @@
+/* eslint-disable max-len */
 /* eslint-disable multiline-ternary */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { db } from '../model/index';
 import { BaseController } from './BaseController';
 import { checkvalidationShedule } from '../validation/ScheduleValidation';
 import { AppError } from '../utils';
+import { Op } from 'sequelize';
 const sheduleModel = db.sheduleModel;
 const classmodel = db.classModel;
 
@@ -23,5 +25,4 @@ export class SheduleController extends BaseController {
         const data = await sheduleModel.create(req.body);
         res.status(201).json({ success: true, StatusCode: 201, data: data, message: 'Data Insert Successfully' });
     }
-
 }

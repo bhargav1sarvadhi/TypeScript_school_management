@@ -7,11 +7,7 @@ const enum Roles {
 
 export default function checkPermission(roles) {
     return function (req, res, next) {
-        if (Array.isArray(roles)) {
-            if (roles.includes(req.user.role)) {
-                return next();
-            }
-        } else if (req.user.role === roles) {
+        if (roles.includes(req.user.role)) {
             return next();
         }
         throw new AppError('You do not have permission to access this route.', 'Forbidden');

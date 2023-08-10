@@ -16,6 +16,7 @@ import { studentsRoutes } from './studentRoutes';
 import { subjectRoutes } from './subjectRoutes';
 import { holidayRoutes } from './holidayRoutes';
 import { leaveRoutes } from './leaveRoutes';
+import { commonRoutes } from './commonGetRoutes';
 
 const invalidRoute = (req, res, next) => {
     return next(new AppError(`${req.url} - url not Found`, 'not_found'));
@@ -33,13 +34,13 @@ export class Routes {
         this.router.use(
             ENDPOINT.USER,
             passport.authenticate('jwt', { session: false }),
-            checkPermission(Roles.PRINCIPAL),
+            checkPermission([Roles.PRINCIPAL]),
             userRoutes,
         );
         this.router.use(
             ENDPOINT.CLASS,
             passport.authenticate('jwt', { session: false }),
-            checkPermission(Roles.PRINCIPAL),
+            checkPermission([Roles.PRINCIPAL]),
             classRoutes,
         );
         this.router.use(
@@ -65,32 +66,37 @@ export class Routes {
         this.router.use(
             ENDPOINT.STUDENTVIEW,
             passport.authenticate('jwt', { session: false }),
-            checkPermission(Roles.STUDENT),
+            checkPermission([Roles.STUDENT]),
             studentRoutes,
         );
         this.router.use(
             ENDPOINT.STUDENT,
             passport.authenticate('jwt', { session: false }),
-            checkPermission(Roles.TEACHER),
+            checkPermission([Roles.TEACHER]),
             studentsRoutes,
         );
         this.router.use(
             ENDPOINT.SUBJECT,
             passport.authenticate('jwt', { session: false }),
-            checkPermission(Roles.PRINCIPAL),
+            checkPermission([Roles.PRINCIPAL]),
             subjectRoutes,
         );
         this.router.use(
             ENDPOINT.HOLIDAY,
             passport.authenticate('jwt', { session: false }),
-            checkPermission(Roles.PRINCIPAL),
+            checkPermission([Roles.PRINCIPAL]),
             holidayRoutes,
         );
         this.router.use(
             ENDPOINT.LEAVE,
             passport.authenticate('jwt', { session: false }),
-            checkPermission(Roles.STUDENT),
+            checkPermission([ Roles.TEACHER, Roles.STUDENT ]),
             leaveRoutes,
+        );
+        this.router.use(
+            ENDPOINT.API,
+            passport.authenticate('jwt', { session: false }),
+            commonRoutes,
         );
         this.router.all('*',invalidRoute);
     }

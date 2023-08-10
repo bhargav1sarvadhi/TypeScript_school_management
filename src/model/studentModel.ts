@@ -6,10 +6,10 @@ import AppError from '../utils/genrateError';
 
 export const StudentModel = sequelize.define<Student>('students', {
     id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+        type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false,
+        defaultValue: DataTypes.UUIDV4,
     },
     firstname: {
         type: DataTypes.STRING,

@@ -20,7 +20,7 @@ export const classModel = sequelize.define<Class>('class', {
         allowNull: false,
     },
     classTeacher: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         allowNull: false,
         unique: true,
         references: {

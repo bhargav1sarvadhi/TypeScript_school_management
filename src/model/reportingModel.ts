@@ -10,7 +10,7 @@ export const reportModel = sequelize.define<Report>('report', {
         allowNull: false,
     },
     teacherId: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
             model: 'users',
@@ -18,7 +18,7 @@ export const reportModel = sequelize.define<Report>('report', {
         },
     },
     studentId: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         allowNull: false,
         references: {
             model: 'users',

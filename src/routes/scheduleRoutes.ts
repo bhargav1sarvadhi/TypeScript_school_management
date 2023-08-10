@@ -7,17 +7,17 @@ import { checkPermission, Roles } from '../middleware/checkPermission';
 const controller = new SheduleController();
 
 sheduleRoutes.post(
-    '/',checkPermission(Roles.TEACHER),
+    '/',checkPermission([Roles.TEACHER]),
     sheduleSchema,
     tryCatchMiddleware(controller.createschedule),
 );
 sheduleRoutes.delete(
-    '/:id',checkPermission(Roles.TEACHER),
+    '/:id',checkPermission([Roles.TEACHER]),
     tryCatchMiddleware(controller.delete.bind(controller)),
 );
 sheduleRoutes.put(
-    '/:id',checkPermission(Roles.TEACHER),
+    '/:id',checkPermission([Roles.TEACHER]),
     sheduleSchema,
     tryCatchMiddleware(controller.update.bind(controller)),
 );
-sheduleRoutes.get('/', tryCatchMiddleware(controller.get.bind(controller)));
+sheduleRoutes.get('/', checkPermission([ Roles.TEACHER,Roles.PRINCIPAL ]),tryCatchMiddleware(controller.get.bind(controller)));

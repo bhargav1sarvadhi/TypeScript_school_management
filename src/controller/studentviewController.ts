@@ -15,14 +15,11 @@ export class StudentController {
         const Tdate = today.toISOString().split('T')[0];
         const studentId = req.user.id;
         const IncludeOption = [{
-            model: UserModel,
-            attributes: ['userName'],
-        }, {
             model: classModel,
             attributes: [ 'className', 'grade' ],
             include: [{
                 model: sheduleModel,
-                attributes: [ 'date', 'time','weekday' ],
+                attributes: [ 'date', 'time' ],
                 where: { date: date || Tdate }
             }]
         }];

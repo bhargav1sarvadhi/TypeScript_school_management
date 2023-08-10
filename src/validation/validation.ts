@@ -39,13 +39,13 @@ const classSchema = (req, res, next) => {
     const schema = Joi.object({
         className: Joi.string().required(),
         grade: Joi.string().required(),
-        classTeacher: Joi.number().required(),
+        classTeacher: Joi.string().required(),
     });
     validateRequest(req, next, schema);
 };
 const attendanceSchema = (req, res, next) => {
     const schema = Joi.object({
-        studentId: Joi.number().required(),
+        studentId: Joi.string().required(),
         date: Joi.date().iso().required(),
         status: Joi.string().required(),
     });
@@ -62,8 +62,8 @@ const sheduleSchema = (req, res, next) => {
 };
 const reportSchema = (req, res, next) => {
     const schema = Joi.object({
-        teacherId: Joi.number(),
-        studentId: Joi.number().required(),
+        teacherId: Joi.string(),
+        studentId: Joi.string().required(),
         description: Joi.string().required(),
         timestamp: Joi.string(),
     });
@@ -72,14 +72,14 @@ const reportSchema = (req, res, next) => {
 const teacherClassSchema = (req, res, next) => {
     const schema = Joi.object({
         classId: Joi.number(),
-        studentId: Joi.number().required(),
+        studentId: Joi.string().required(),
     });
     validateRequest(req, next, schema);
 };
 const subjectSchema = (req, res, next) => {
     const schema = Joi.object({
         subjectname: Joi.string().required(),
-        teacherId: Joi.number().required(),
+        teacherId: Joi.string().required(),
     });
     validateRequest(req, next, schema);
 };
@@ -95,6 +95,8 @@ const leaveSchema = (req, res, next) => {
         startdate: Joi.date().iso().required(),
         enddate: Joi.date().iso().required(),
         reason: Joi.string().required(),
+        status: Joi.string(),
+        role: Joi.string(),
     });
     validateRequest(req, next, schema);
 };

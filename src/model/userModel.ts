@@ -7,10 +7,10 @@ import AppError from '../utils/genrateError';
 
 export const UserModel = sequelize.define<UserAttributes>('users', {
     id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+        type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false,
+        defaultValue: DataTypes.UUIDV4,
     },
     firstname: {
         type: DataTypes.STRING,

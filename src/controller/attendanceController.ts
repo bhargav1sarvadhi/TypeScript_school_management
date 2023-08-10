@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { Op } from 'sequelize';
 import { classModel } from '../model/classModel';
 import { db } from '../model/index';
 import AppError from '../utils/genrateError';
@@ -30,12 +32,38 @@ export class AttendanceController extends BaseController {
     async Attendanceupdate(req, res, next) {
         const { id } = req.params;
         const [{ studentId, date, status }] = req.body;
-        const [updated] = await this.model.update({ studentId, date, status }, { where: { id }});
+        const [updated] = await attendanceModel.update({ studentId, date, status }, { where: { id }});
         if (updated) {
-            const updatedData = await this.model.findByPk(id);
+            const updatedData = await attendanceModel.findByPk(id);
             res.status(200).json({ success: true, StatusCode: 200, data: updatedData, message: 'Data Update Successfully' });
         } else {
             return next(new AppError(`This id = ${id} not found`, 'not_found'));
+        }
+    }
+
+    async getAttendance(req, res, next) {
+        const { body: { date, startdate, enddate, period }, params: { studentId }} = req;
+        let attendance;
+        if (period === 'day' && date) {
+            attendance = await attendanceModel.findOne({ where: { studentId,date }});
+        }
+        if (period === 'last-week') {
+            const lastWeekStart = new Date();
+            lastWeekStart.setDate(lastWeekStart.getDate() - 7);
+            attendance = await attendanceModel.findAll({ where: { studentId,date: { [Op.between]: [ lastWeekStart, new Date() ] }}});
+        }
+        if (period === 'last-month') {
+            const lastMonthStart = new Date();
+            lastMonthStart.setMonth(lastMonthStart.getMonth() - 1);
+            attendance = await attendanceModel.findAll({ where: { studentId,date: { [Op.between]: [ lastMonthStart, new Date() ] }}});
+        }
+        if (period === 'custom' && startdate && enddate) {
+            attendance = await attendanceModel.findAll({ where: { studentId,date: { [Op.between]: [ startdate, enddate ] }}});
+        }
+        if (attendance) {
+            res.status(200).json({ success: true, StatusCode: 200, data: attendance, message: 'Data Finded Successfully' });
+        } else {
+            return next(new AppError('This is not found', 'not_found'));
         }
     }
 }

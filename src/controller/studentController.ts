@@ -38,7 +38,6 @@ export class StudentsController extends BaseController {
         console.log(emailId);
         expirescheck(token);
         const [updateData] = await studentClasstModel.update(req.body, { where: { id: emailId } as WhereOptions });
-        console.log(updateData);
         if (updateData === 0) {
             return next(new AppError(`This id = ${emailId} not found`, 'not_found'));
         }
