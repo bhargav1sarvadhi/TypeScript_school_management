@@ -1,8 +1,8 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/db';
 import { Class } from '../utils/interface';
-// import { teacherClasstModel } from './teacherClassModel';
-// import { sheduleModel } from './scheduleModel';
+import { teacherClasstModel } from './teacherClassModel';
+import { sheduleModel } from './scheduleModel';
 
 export const classModel = sequelize.define<Class>('class', {
     id: {
@@ -35,7 +35,7 @@ export const classModel = sequelize.define<Class>('class', {
     }],
 });
 
-// classModel.hasMany(teacherClasstModel, { foreignKey: 'classId' });
-// teacherClasstModel.belongsTo(classModel, { foreignKey: 'classId' });
-// classModel.hasMany(sheduleModel, { foreignKey: 'classId' });
-// sheduleModel.belongsTo(classModel, { foreignKey: 'classId' });
+classModel.hasMany(teacherClasstModel, { foreignKey: 'classId' });
+teacherClasstModel.belongsTo(classModel, { foreignKey: 'classId' });
+classModel.hasMany(sheduleModel, { foreignKey: 'classId' });
+sheduleModel.belongsTo(classModel, { foreignKey: 'classId' });

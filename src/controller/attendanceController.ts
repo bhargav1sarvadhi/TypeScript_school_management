@@ -45,7 +45,7 @@ export class AttendanceController extends BaseController {
         const { body: { date, startdate, enddate, period }, params: { studentId }} = req;
         let attendance;
         if (period === 'day' && date) {
-            attendance = await attendanceModel.findOne({ where: { studentId,date }});
+            attendance = await attendanceModel.findAll({ where: { studentId,date }});
         }
         if (period === 'last-week') {
             const lastWeekStart = new Date();

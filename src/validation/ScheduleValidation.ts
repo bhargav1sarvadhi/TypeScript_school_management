@@ -20,7 +20,6 @@ export function checkvalidationShedule(time, dayOfWeek, teacherStd) {
         throw new AppError('Cannot schedule lectures for past times.', 'invalid_request');
     }
     if (time < allowedTimeRange.startTime || time > allowedTimeRange.endTime) {
-        console.log('fire1');
         throw new AppError('Invalid time for your class schedule.', 'invalid_request');
     }
     if (dayOfWeek === 0) {

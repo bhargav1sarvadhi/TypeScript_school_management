@@ -23,10 +23,7 @@ export class StudentController {
                 where: { date: date || Tdate }
             }]
         }];
-        const data = await teacherclass.findOne({ include: IncludeOption, where: { studentId: studentId } });
-        if (data == null || (data.class.shedules.length === 0)) {
-            return next(new AppError('No have any Shedule Today', 'not_found'));
-        }
+        const data = await teacherclass.findAll({ include: IncludeOption, where: { studentId: studentId } });
         return res.status(200).json({ success: true, StatusCode: 200, data: data, message: 'Data Finded Successfully' });
     }
 }

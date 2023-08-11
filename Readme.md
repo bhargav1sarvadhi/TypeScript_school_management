@@ -111,3 +111,284 @@ school-management-system/
 |-- package.json          # Node.js project configuration file
 |-- .gitignore            # List of files/folders to ignore in version control
 ```
+
+
+
+
+<!-- Auth Routes 
+
+* localhost:8000/auth/signup  --- post ---  teacher and pricipal singup 
+* localhost:8000/auth/login.  —-post —  teacher student principal login
+* localhost:8000/auth/signup/bulkcreate —post — bulk create user 
+
+
+User Routes 
+-only use principal 
+
+* localhost:8000/user/id. —delete— delete user
+* localhost:8000/user/id. —put— update user
+* localhost:8000/user get get all  user
+
+Class  Routes 
+-only use principal 
+
+ localhost:8000/class --get-- get all  class
+* localhost:8000/class —post— create class
+* localhost:8000/class/id --delete-- delete class
+* localhost:8000/class/id —put— update class
+
+
+Attendance  Routes 
+-only use Teacher
+
+  localhost:8000/attendance/id --get-- get student  attendance
+* localhost:8000/attendance —post— create attendance
+* localhost:8000/attendance/id --delete-- delete attendance
+* localhost:8000/attendance/id —put— update clattendanceass
+
+Schedule  Routes 
+-only use Teacher
+
+  localhost:8000/schedule --get-- get   schedule
+* localhost:8000/schedule —post— create schedule
+* localhost:8000/schedule/id --delete-- delete schedule
+* localhost:8000/schedule/id —put— update schedule
+
+
+Report  Routes 
+-only use Teacher
+
+  localhost:8000/report --get-- get   report
+* localhost:8000/report —post— create report
+* localhost:8000/report/id --delete-- delete report
+* localhost:8000/report/id —put— update report
+
+Teacher insert student in classs  Routes 
+-only use Teacher
+
+ localhost:8000/teacherclass --get-- get   teacherclass
+* localhost:8000/teacherclass —post— create teacherclass
+* localhost:8000/teacherclass/id --delete-- delete teacherclass
+* localhost:8000/teacherclass/id —put— update teacherclass
+
+Student  Routes 
+-only use Teacher
+
+  localhost:8000/student --get-- get   student
+* localhost:8000/student —post— create student
+* localhost:8000/student/id --delete-- delete student
+* localhost:8000/student/id —put— update student
+
+
+Subject  Routes 
+-only use Teacher
+
+  localhost:8000/subject --get-- get   subject
+* localhost:8000/subject —post— create subject
+* localhost:8000/subject/id --delete-- delete subject
+* localhost:8000/subject/id —put— update subject
+
+Holiday  Routes 
+-only access Principal
+
+  localhost:8000/holiday --get-- get   holiday
+* localhost:8000/holiday —post— create holiday
+* localhost:8000/holiday/id --delete-- delete holiday
+* localhost:8000/holiday/id —put— update holiday
+
+Leave  Routes 
+-only access Teacher and Student
+
+  localhost:8000/leave --get-- get   leave
+* localhost:8000/leave —post— create leave
+* localhost:8000/leave/id --delete-- delete leave
+* localhost:8000/leave/id —put— update holileaveday
+
+Teachers leaves show pricipal
+- acess only principal
+* localhost:8000/api/showleaves   -- get --  showleaves only teacher
+* localhost:8000/api/aproveleave/1   -- patch --  principal aprove teacher leaves
+* localhost:8000/api/rejectleave/1   -- get --  showleaves only teacher
+
+student  leaves show Techers
+- acess only Teacher
+* localhost:8000/api/teacher/showleaves   -- get --  showleaves only student 
+* localhost:8000/api/teacher/aproveleave/1   -- patch --  teacher aprove student  leaves
+* localhost:8000/api/teacher/rejectleave/1   -- get --  showleaves only students -->
+
+
+
+
+
+# API Routes
+
+## Auth Routes
+
+- `POST` /auth/signup
+  - Teacher and Principal signup
+
+- `POST` /auth/login
+  - Teacher, Student, and Principal login
+
+- `POST` /auth/signup/bulkcreate
+  - Bulk create users
+
+## User Routes
+
+- `DELETE` /user/id
+  - Delete user (Principal only)
+
+- `PUT` /user/id
+  - Update user (Principal only)
+
+- `GET` /user
+  - Get all users (Principal only)
+
+## Class Routes
+
+- `GET` /class
+  - Get all classes (Principal only)
+
+- `POST` /class
+  - Create a class (Principal only)
+
+- `DELETE` /class/id
+  - Delete a class (Principal only)
+
+- `PUT` /class/id
+  - Update a class (Principal only)
+
+## Attendance Routes
+
+- `GET` /attendance/id
+  - Get student attendance (Teacher only)
+
+- `POST` /attendance
+  - Create attendance (Teacher only)
+
+- `DELETE` /attendance/id
+  - Delete attendance (Teacher only)
+
+- `PUT` /attendance/id
+  - Update attendance (Teacher only)
+
+## Schedule Routes
+
+- `GET` /schedule
+  - Get schedules (Teacher only)
+
+- `POST` /schedule
+  - Create a schedule (Teacher only)
+
+- `DELETE` /schedule/id
+  - Delete a schedule (Teacher only)
+
+- `PUT` /schedule/id
+  - Update a schedule (Teacher only)
+
+## Report Routes
+
+- `GET` /report
+  - Get reports (Teacher only)
+
+- `POST` /report
+  - Create a report (Teacher only)
+
+- `DELETE` /report/id
+  - Delete a report (Teacher only)
+
+- `PUT` /report/id
+  - Update a report (Teacher only)
+
+## Teacher-Student Class Routes
+
+- `GET` /teacherclass
+  - Get teacher-student class assignments (Teacher only)
+
+- `POST` /teacherclass
+  - Create a teacher-student class assignment (Teacher only)
+
+- `DELETE` /teacherclass/id
+  - Delete a teacher-student class assignment (Teacher only)
+
+- `PUT` /teacherclass/id
+  - Update a teacher-student class assignment (Teacher only)
+
+## Student Routes
+
+- `GET` /student
+  - Get students (Teacher only)
+
+- `POST` /student
+  - Create a student (Teacher only)
+
+- `DELETE` /student/id
+  - Delete a student (Teacher only)
+
+- `PUT` /student/id
+  - Update a student (Teacher only)
+
+## Subject Routes
+
+- `GET` /subject
+  - Get subjects (Teacher only)
+
+- `POST` /subject
+  - Create a subject (Teacher only)
+
+- `DELETE` /subject/id
+  - Delete a subject (Teacher only)
+
+- `PUT` /subject/id
+  - Update a subject (Teacher only)
+
+## Holiday Routes
+
+- `GET` /holiday
+  - Get holidays (Principal only)
+
+- `POST` /holiday
+  - Create a holiday (Principal only)
+
+- `DELETE` /holiday/id
+  - Delete a holiday (Principal only)
+
+- `PUT` /holiday/id
+  - Update a holiday (Principal only)
+
+## Leave Routes
+
+- `GET` /leave
+  - Get leaves (Teacher and Student)
+
+- `POST` /leave
+  - Create a leave (Teacher and Student)
+
+- `DELETE` /leave/id
+  - Delete a leave (Teacher and Student)
+
+- `PUT` /leave/id
+  - Update a leave (Teacher and Student)
+
+## Principal-Teacher Interaction
+
+- `GET` /api/showleaves
+  - Show leaves of teachers (Principal only)
+
+- `PATCH` /api/aproveleave/1
+  - Approve teacher leaves (Principal only)
+
+- `GET` /api/rejectleave/1
+  - Reject teacher leaves (Principal only)
+
+## Teacher-Student Interaction
+
+- `GET` /api/teacher/showleaves
+  - Show leaves of students (Teacher only)
+
+- `PATCH` /api/teacher/aproveleave/1
+  - Approve student leaves (Teacher only)
+
+- `GET` /api/teacher/rejectleave/1
+  - Reject student leaves (Teacher only)
+

@@ -33,6 +33,10 @@ export const StudentModel = sequelize.define<Student>('students', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    gender: {
+        type: DataTypes.ENUM('Male', 'Female'),
+        allowNull: true,
+    },
     role: {
         type: DataTypes.STRING,
         defaultValue: 'Student',

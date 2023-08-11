@@ -75,3 +75,13 @@ export interface Leave extends Model {
   role: string;
 }
 
+export interface Homeworks extends Model {
+  id: number;
+  homework: string;
+  discription: number;
+  classId: number;
+  teacherId: string;
+  date: string;
+  subjectId: number;
+}
+

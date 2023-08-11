@@ -10,6 +10,7 @@ import { StudentModel } from './studentModel';
 import { subjectModel } from './subjectModel';
 import { holidayModel } from './holidayModel';
 import { LeaveModel } from './leaveModel';
+import { homeworkModel } from './homeworkModel';
 
 // eslint-disable-next-line max-len
 export const db = {
@@ -25,6 +26,7 @@ export const db = {
     subjectModel,
     holidayModel,
     LeaveModel,
+    homeworkModel,
 };
 
-// db.sequelize.sync({ force: true });
+db.sequelize.sync();

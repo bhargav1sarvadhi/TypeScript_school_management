@@ -108,7 +108,7 @@ export class Sendnotification {
                 <h1>Invite Notification</h1>
                 <p>Hello there! ${email.message}</p>
                 <p>You have been invited to join our app. Click the link below to create an account.</p>
-                <p>Invitation Link: <a class="button" href="http://localhost:3000/create/${email.id}">Join Now</a></p>
+                <p>Invitation Link: <a class="button" href="http://localhost:8000/create/${email.id}">Join Now</a></p>
                 <p>Regards,</p>
                 <p>Your App Team</p>
               </div>

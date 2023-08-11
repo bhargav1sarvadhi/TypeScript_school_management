@@ -9,7 +9,7 @@ import { reportRoutes } from './reportRoutes';
 import passport from 'passport';
 import { Roles, checkPermission } from '../middleware/index';
 import { teacherRoutes } from './teacherclassRoutes';
-import { studentRoutes } from './studentviewRoutes';
+import { studentviewRoutes } from './studentviewRoutes';
 import AppError from '../utils/genrateError';
 import { nodemailerRoutes } from './NodemailerRoutes';
 import { studentsRoutes } from './studentRoutes';
@@ -17,6 +17,8 @@ import { subjectRoutes } from './subjectRoutes';
 import { holidayRoutes } from './holidayRoutes';
 import { leaveRoutes } from './leaveRoutes';
 import { commonRoutes } from './commonGetRoutes';
+import { homeworkRoutes } from './homeworkRoutes';
+import { dashboardPRoutes } from './dashboard/principaldashRoutes';
 
 const invalidRoute = (req, res, next) => {
     return next(new AppError(`${req.url} - url not Found`, 'not_found'));
@@ -67,7 +69,7 @@ export class Routes {
             ENDPOINT.STUDENTVIEW,
             passport.authenticate('jwt', { session: false }),
             checkPermission([Roles.STUDENT]),
-            studentRoutes,
+            studentviewRoutes,
         );
         this.router.use(
             ENDPOINT.STUDENT,
@@ -97,6 +99,18 @@ export class Routes {
             ENDPOINT.API,
             passport.authenticate('jwt', { session: false }),
             commonRoutes,
+        );
+        this.router.use(
+            ENDPOINT.HOMEWORK,
+            passport.authenticate('jwt', { session: false }),
+            checkPermission([Roles.TEACHER]),
+            homeworkRoutes,
+        );
+        this.router.use(
+            ENDPOINT.DASHBOARD_PRINCIPAL,
+            passport.authenticate('jwt', { session: false }),
+            checkPermission([Roles.PRINCIPAL]),
+            dashboardPRoutes,
         );
         this.router.all('*',invalidRoute);
     }

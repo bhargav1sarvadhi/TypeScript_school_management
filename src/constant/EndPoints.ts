@@ -13,4 +13,6 @@ export enum ENDPOINT {
   HOLIDAY = '/holiday',
   LEAVE = '/leave',
   API = '/api',
+  HOMEWORK = '/homework',
+  DASHBOARD_PRINCIPAL = '/dashboard/principal',
 }

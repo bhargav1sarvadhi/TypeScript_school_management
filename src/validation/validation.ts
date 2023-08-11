@@ -100,6 +100,17 @@ const leaveSchema = (req, res, next) => {
     });
     validateRequest(req, next, schema);
 };
+const homeworkSchema = (req, res, next) => {
+    const schema = Joi.object({
+        date: Joi.date().iso().required(),
+        homework: Joi.string().required(),
+        teacherId: Joi.string().required(),
+        classId: Joi.number().required(),
+        subjectId: Joi.number().required(),
+        discription: Joi.string().required(),
+    });
+    validateRequest(req, next, schema);
+};
 const updatePasswordSchema = (req, res, next) => {
     const schema = Joi.object({
         password: Joi.string().min(6).regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/).required().messages({
@@ -120,5 +131,6 @@ export {
     updatePasswordSchema,
     subjectSchema,
     holidaySchema,
-    leaveSchema
+    leaveSchema,
+    homeworkSchema
 };
