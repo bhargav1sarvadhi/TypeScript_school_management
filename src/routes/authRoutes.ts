@@ -17,6 +17,7 @@ authRoutes.post(
     tryCatchMiddleware(controller.bulkinsert.bind(controller)),
 );
 authRoutes.post('/login', tryCatchMiddleware(authController.login));
+authRoutes.post('/reset-password', tryCatchMiddleware(authController.forgetPassword));
 authRoutes.get(
     '/logout',
     passport.authenticate('jwt', { session: false }),

@@ -7,7 +7,6 @@ import { AttendanceController } from './attendanceController';
 import { SheduleController } from './sheduleController';
 import { ReportController } from './reportController';
 import { TeacherclassController } from './teacherClassController';
-import { StudentController } from './studentviewController';
 import { StudentsController } from './studentController';
 import { SubjectController } from './subjectContoller';
 import { HolidayController } from './holidayController';
@@ -24,7 +23,6 @@ export {
     SheduleController,
     ReportController,
     TeacherclassController,
-    StudentController,
     StudentsController,
     SubjectController,
     HolidayController,

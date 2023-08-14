@@ -24,7 +24,6 @@ export function checkvalidationShedule(time, dayOfWeek, teacherStd) {
     }
     if (dayOfWeek === 0) {
         throw new AppError('Weekend (Saturday/Sunday) schedules are not allowed.', 'invalid_request');
-        // return { isValid: false, errorMessage: 'Weekend (Saturday/Sunday) schedules are not allowed.' };
     }
     return { isValid: true };
 }

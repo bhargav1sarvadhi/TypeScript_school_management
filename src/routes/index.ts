@@ -9,7 +9,6 @@ import { reportRoutes } from './reportRoutes';
 import passport from 'passport';
 import { Roles, checkPermission } from '../middleware/index';
 import { teacherRoutes } from './teacherclassRoutes';
-import { studentviewRoutes } from './studentviewRoutes';
 import AppError from '../utils/genrateError';
 import { nodemailerRoutes } from './NodemailerRoutes';
 import { studentsRoutes } from './studentRoutes';
@@ -64,12 +63,6 @@ export class Routes {
             ENDPOINT.TEACHER,
             passport.authenticate('jwt', { session: false }),
             teacherRoutes,
-        );
-        this.router.use(
-            ENDPOINT.STUDENTVIEW,
-            passport.authenticate('jwt', { session: false }),
-            checkPermission([Roles.STUDENT]),
-            studentviewRoutes,
         );
         this.router.use(
             ENDPOINT.STUDENT,

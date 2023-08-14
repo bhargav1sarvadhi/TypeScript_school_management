@@ -9,6 +9,10 @@ import { db } from '../model';
 import jwt from 'jsonwebtoken';
 import { StudentModel } from '../model/studentModel';
 import session from 'express-session';
+import { NotificationType } from '../utils';
+import { Sendnotification, createToken } from '../utils/notificationEmail';
+import { Roles } from '../middleware';
+const sendnotification = new Sendnotification;
 const UserModel = db.UserModel;
 
 export class AuthContoller {
@@ -37,5 +41,22 @@ export class AuthContoller {
             });
             res.status(200).json({ success: true, StatusCode: 200, message: 'logout Successfully' });
         }
+    }
+
+    async forgetPassword(req, res, next) {
+        const { body: { email, phone }} = req;
+        const verify = await UserModel.findOne({ where: { email: email }}) || await StudentModel.findOne({ where: { email: email }});
+        if (verify) {
+            if (verify.phone == phone) {
+                const token = createToken(verify.id)
+                if (verify.role === Roles.TEACHER || verify.role === Roles.PRINCIPAL) {
+                   sendnotification.Send(NotificationType.INVITE,{ emailAddress: verify.email, message: `Hello ${verify.firstname}`,id: verify.id ,link: `http://localhost:8000/newuser/password-generate/${verify.id}/${token}` });
+                } else {
+                   sendnotification.Send(NotificationType.INVITE,{ emailAddress: verify.email, message: `Hello ${verify.firstname}`,id: verify.id ,link: `http://localhost:8000/student/newuser/password-generate/${verify.id}/${token}` });
+                }
+            }
+            throw new AppError('please Check details Phone number and please user +91', 'not_found');
+        }
+        throw new AppError('please Check details User not Found', 'not_found');
     }
 }

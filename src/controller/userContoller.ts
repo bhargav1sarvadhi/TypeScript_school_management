@@ -38,7 +38,7 @@ export class UserController extends BaseController {
         const { params: { emailId, token }} = req;
         expirescheck(token);
         const decodedToken: JwtPayload = jwt.verify(token, process.env.JWT_SECERET) as JwtPayload;
-        return res.status(200).json({ success: true, StatusCode: 200, message: 'Successfully link opened' });
+        return res.render('updatePassword');
     }
 
     async updatePassword(req, res, next) {

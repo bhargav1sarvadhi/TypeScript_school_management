@@ -74,8 +74,6 @@ export class DashboardController {
     }
 }
 
-
-
 // create long  method and using javasciprt logic build
 
 // const startDate = new Date(`${year}-01-01`);

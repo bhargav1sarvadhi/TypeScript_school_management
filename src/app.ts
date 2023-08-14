@@ -8,6 +8,7 @@ import { errorhandler } from './middleware/errorHandler';
 import passport from 'passport';
 import './config/passwordJwt';
 import session from 'express-session';
+import cors from 'cors';
 import path from 'path';
 dotenv.config();
 const routes = new Routes();
@@ -20,7 +21,9 @@ class App {
         this.app = express();
         this.app.use(express.urlencoded());
         this.app.set('view engine', 'ejs');
+        this.app.set('views', path.join(__dirname, 'views'));
         this.app.use(express.json());
+        this.app.use(cors());
         this.app.use(passport.initialize());
         this.app.use(session({
             secret: process.env.SESSION_SECERET,

@@ -7,6 +7,6 @@ const controller = new UserController;
 const studentcontroller = new StudentsController;
 
 nodemailerRoutes.get('/password-generate/:emailId/:token',tryCatchMiddleware(controller.userInvite));
-nodemailerRoutes.patch('/password-generate/:emailId/:token', updatePasswordSchema, tryCatchMiddleware(controller.updatePassword));
+nodemailerRoutes.post('/password-generate/:emailId/:token', updatePasswordSchema, tryCatchMiddleware(controller.updatePassword));
 nodemailerRoutes.get('/student/password-generate/:emailId/:token',tryCatchMiddleware(studentcontroller.studentInvite));
-nodemailerRoutes.patch('/student/password-generate/:emailId/:token',updatePasswordSchema,tryCatchMiddleware(studentcontroller.studentupdatePassword));
+nodemailerRoutes.post('/student/password-generate/:emailId/:token',updatePasswordSchema,tryCatchMiddleware(studentcontroller.studentupdatePassword));

@@ -4,9 +4,9 @@
   "main": "./build/app.js",
   "license": "MIT",
   "scripts": {
-    "start:build": "tsc -w",
-    "start:run": "nodemon build/app.js",
-    "start": "concurrently yarn:start:*"
+    "build": "tsc -w",
+    "dev": "nodemon ./src/app.ts",
+    "start": "tsc && yarn dev"
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -17,6 +17,7 @@
     "bcrypt": "^5.1.0",
     "concurrently": "^8.2.0",
     "connect-pg-simple": "^9.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "eslint-config-prettier": "^8.8.0",
@@ -35,6 +36,7 @@
     "redis": "^4.6.7",
     "sequelize": "^6.32.1",
     "sequelize-cli": "^6.6.1",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
     "winston": "^3.10.0"
   },
