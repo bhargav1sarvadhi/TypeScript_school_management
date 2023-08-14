@@ -3,3 +3,7 @@
 /.env
 
 /build
+/migrations
+/models
+/config
+/seeders
