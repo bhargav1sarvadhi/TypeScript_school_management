@@ -14,5 +14,5 @@ export enum ENDPOINT {
   LEAVE = '/leave',
   API = '/api',
   HOMEWORK = '/homework',
-  DASHBOARD_PRINCIPAL = '/dashboard/principal',
+  DASHBOARD_PRINCIPAL = '/dashboard',
 }

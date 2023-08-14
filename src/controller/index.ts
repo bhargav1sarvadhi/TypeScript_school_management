@@ -13,7 +13,7 @@ import { SubjectController } from './subjectContoller';
 import { HolidayController } from './holidayController';
 import { LeaveController } from './leaveController';
 import { HomeworkController } from './homeworkController';
-import { PrincipalDashboardController } from './dashboard/principaldashbordController';
+import { DashboardController } from './dashboard/dashbordController';
 
 export {
     BaseController,
@@ -30,5 +30,5 @@ export {
     HolidayController,
     LeaveController,
     HomeworkController,
-    PrincipalDashboardController
+    DashboardController,
 };

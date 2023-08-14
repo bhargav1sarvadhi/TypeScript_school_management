@@ -18,7 +18,7 @@ import { holidayRoutes } from './holidayRoutes';
 import { leaveRoutes } from './leaveRoutes';
 import { commonRoutes } from './commonGetRoutes';
 import { homeworkRoutes } from './homeworkRoutes';
-import { dashboardPRoutes } from './dashboard/principaldashRoutes';
+import { dashboardPRoutes } from './dashboard/DashboardRoutes';
 
 const invalidRoute = (req, res, next) => {
     return next(new AppError(`${req.url} - url not Found`, 'not_found'));
@@ -109,7 +109,6 @@ export class Routes {
         this.router.use(
             ENDPOINT.DASHBOARD_PRINCIPAL,
             passport.authenticate('jwt', { session: false }),
-            checkPermission([Roles.PRINCIPAL]),
             dashboardPRoutes,
         );
         this.router.all('*',invalidRoute);

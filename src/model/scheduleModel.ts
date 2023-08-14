@@ -17,6 +17,14 @@ export const sheduleModel = sequelize.define<Shedule>('schedule', {
             key: 'id',
         },
     },
+    teacherId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'users',
+            key: 'id',
+        },
+    },
     time: {
         type: DataTypes.TIME,
         allowNull: false,

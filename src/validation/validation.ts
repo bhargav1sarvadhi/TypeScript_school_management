@@ -57,6 +57,7 @@ const sheduleSchema = (req, res, next) => {
         classId: Joi.number().required(),
         time: Joi.string().required(),
         date: Joi.date().iso().required(),
+        teacherId: Joi.string(),
     });
     validateRequest(req, next, schema);
 };

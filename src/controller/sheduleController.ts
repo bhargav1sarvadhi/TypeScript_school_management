@@ -15,6 +15,7 @@ export class SheduleController extends BaseController {
     }
     async createschedule(req, res, next) {
         const { body: { classId, time, date }} = req;
+        req.body.teacherId = req.user.id;
         const classes = await classmodel.findOne({ where: { classTeacher: req.user.id }});
         const dayOfWeek = new Date(date).getDay();
         const teacherStd: number = classes.className as unknown as number;

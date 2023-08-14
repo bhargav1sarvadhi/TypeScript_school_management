@@ -40,6 +40,7 @@ export interface Shedule extends Model {
   classId: string;
   time: string;
   date: string;
+  teacherId: string;
 }
 export interface Report extends Model {
   id: number;
