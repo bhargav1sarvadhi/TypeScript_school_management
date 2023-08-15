@@ -36,6 +36,6 @@ export const sheduleModel = sequelize.define<Shedule>('schedule', {
 },{
     indexes: [{
         unique: true,
-        fields: [ 'date','time' ],
+        fields: [ 'date','time','classId','teacherId' ],
     }],
 });

@@ -16,7 +16,6 @@ import { subjectRoutes } from './subjectRoutes';
 import { holidayRoutes } from './holidayRoutes';
 import { leaveRoutes } from './leaveRoutes';
 import { commonRoutes } from './commonGetRoutes';
-import { homeworkRoutes } from './homeworkRoutes';
 import { dashboardPRoutes } from './dashboard/DashboardRoutes';
 
 const invalidRoute = (req, res, next) => {
@@ -92,12 +91,6 @@ export class Routes {
             ENDPOINT.API,
             passport.authenticate('jwt', { session: false }),
             commonRoutes,
-        );
-        this.router.use(
-            ENDPOINT.HOMEWORK,
-            passport.authenticate('jwt', { session: false }),
-            checkPermission([Roles.TEACHER]),
-            homeworkRoutes,
         );
         this.router.use(
             ENDPOINT.DASHBOARD_PRINCIPAL,

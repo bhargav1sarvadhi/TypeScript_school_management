@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { db } from '../model/index';
 import { BaseController } from './BaseController';
 const reportModel = db.reportModel;

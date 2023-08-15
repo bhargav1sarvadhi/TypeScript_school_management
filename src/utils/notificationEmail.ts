@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import nodemailer, { Transporter } from 'nodemailer';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
@@ -71,49 +69,55 @@ export class Sendnotification {
         `;
                 break;
 
-            case 'message':
+            case 'forget':
                 subject = 'New Message Notification';
                 htmlContent = `
           <!DOCTYPE html>
-          <html>
-            <head>
-              <title>${subject}</title>
-              <style>
-                body {
-                  font-family: Arial, sans-serif;
-                  line-height: 1.6;
-                }
-                h1 {
-                  color: #007bff;
-                }
-                .container {
-                  max-width: 600px;
-                  margin: 0 auto;
-                  padding: 20px;
-                  border: 1px solid #ccc;
-                  border-radius: 5px;
-                }
-                .button {
-                  display: inline-block;
-                  background-color: #007bff;
-                  color: #fff;
-                  padding: 10px 20px;
-                  text-decoration: none;
-                  border-radius: 5px;
-                }
-              </style>
-            </head>
-            <body>
-              <div class="container">
-                <h1>Invite Notification</h1>
-                <p>Hello there! ${email.message}</p>
-                <p>You have been invited to join our app. Click the link below to create an account.</p>
-                <p>Invitation Link: <a class="button" href="http://localhost:8000/create/${email.id}">Join Now</a></p>
-                <p>Regards,</p>
-                <p>Your App Team</p>
-              </div>
-            </body>
-          </html>
+         <html>
+         <head>
+  <title>${subject}</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #007bff;
+    }
+    /* Highlighted Reset Password Section */
+    .reset-password {
+      color: red;
+      font-weight: bold;
+    }
+    /* Container Styles */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .button {
+      display: inline-block;
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Reset Password</h1>
+    <p>Hello there! ${email.message}</p>
+    <!-- Reset Password Section -->
+    <p class="reset-password">If you have forgotten your password, you can <a href="${email.link}">reset it here</a>.</p>
+    <p>Regards,</p>
+    <p>Your App Team</p>
+  </div>
+</body>
+</html>
         `;
                 break;
 

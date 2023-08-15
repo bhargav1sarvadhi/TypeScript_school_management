@@ -1,7 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-var */
-/* eslint-disable prefer-const */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response, NextFunction } from 'express';
 import AppError from '../utils/genrateError';
 import * as bcrypt from 'bcrypt';
@@ -48,11 +44,13 @@ export class AuthContoller {
         const verify = await UserModel.findOne({ where: { email: email }}) || await StudentModel.findOne({ where: { email: email }});
         if (verify) {
             if (verify.phone == phone) {
-                const token = createToken(verify.id)
+                const token = createToken(verify.id);
                 if (verify.role === Roles.TEACHER || verify.role === Roles.PRINCIPAL) {
-                   sendnotification.Send(NotificationType.INVITE,{ emailAddress: verify.email, message: `Hello ${verify.firstname}`,id: verify.id ,link: `http://localhost:8000/newuser/password-generate/${verify.id}/${token}` });
+                    sendnotification.Send(NotificationType.FORGET, { emailAddress: verify.email, message: `Hello ${verify.firstname}`, id: verify.id, link: `http://localhost:8000/newuser/password-generate/${verify.id}/${token}` });
+                    return res.status(200).json({ success: true, StatusCode: 200, message: 'Sent mail Successfully' });
                 } else {
-                   sendnotification.Send(NotificationType.INVITE,{ emailAddress: verify.email, message: `Hello ${verify.firstname}`,id: verify.id ,link: `http://localhost:8000/student/newuser/password-generate/${verify.id}/${token}` });
+                    sendnotification.Send(NotificationType.FORGET, { emailAddress: verify.email, message: `Hello ${verify.firstname}`, id: verify.id, link: `http://localhost:8000/student/newuser/password-generate/${verify.id}/${token}` });
+                    return res.status(200).json({ success: true, StatusCode: 200, message: 'Sent mail Successfully' });
                 }
             }
             throw new AppError('please Check details Phone number and please user +91', 'not_found');

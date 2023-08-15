@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable max-len */
 import { db } from '../model/index';
 import { AppError, NotificationType, Sendnotification } from '../utils';
 import { BaseController } from './BaseController';

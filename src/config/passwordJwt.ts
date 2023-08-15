@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import passport from 'passport';
 import { db } from '../model';
 import passport_jwt from 'passport-jwt';

@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { db } from '../model/index';
 import jwt,{ JwtPayload } from 'jsonwebtoken';
 import dotenv from 'dotenv';

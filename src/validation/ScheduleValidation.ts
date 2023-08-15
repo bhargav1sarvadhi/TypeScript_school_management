@@ -1,8 +1,4 @@
-/* eslint-disable max-len */
-
 import { AppError } from '../utils';
-
-/* eslint-disable multiline-ternary */
 
 export function checkvalidationShedule(time, dayOfWeek, teacherStd) {
     const isSaturday = dayOfWeek === 6;
@@ -16,9 +12,11 @@ export function checkvalidationShedule(time, dayOfWeek, teacherStd) {
     } else {
         allowedTimeRange = (teacherStd <= 7)? { startTime: '07:00', endTime: '11:00' }: { startTime: '12:00', endTime: '16:00' };
     }
-    if (!isSaturday && (isWeekend || dayOfWeek < currentDayOfWeek || (dayOfWeek === currentDayOfWeek && time < currentTime))) {
-        throw new AppError('Cannot schedule lectures for past times.', 'invalid_request');
-    }
+    /// update this fuctions
+
+    // if (!isSaturday && (isWeekend || dayOfWeek < currentDayOfWeek || (dayOfWeek === currentDayOfWeek && time < currentTime))) {
+    //     throw new AppError('Cannot schedule lectures for past times.', 'invalid_request');
+    // }
     if (time < allowedTimeRange.startTime || time > allowedTimeRange.endTime) {
         throw new AppError('Invalid time for your class schedule.', 'invalid_request');
     }

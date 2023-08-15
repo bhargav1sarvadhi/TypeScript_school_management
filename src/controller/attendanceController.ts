@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Op } from 'sequelize';
 import { classModel } from '../model/classModel';
 import { db } from '../model/index';

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { hashSync } from 'bcrypt';
 import AppError from '../utils/genrateError';
 import { Request, Response, NextFunction } from 'express';

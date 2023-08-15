@@ -1,5 +1,3 @@
-/* eslint-disable arrow-parens */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import redis from 'ioredis';
 import AppError from '../utils/genrateError';
 const redisClient = new redis;

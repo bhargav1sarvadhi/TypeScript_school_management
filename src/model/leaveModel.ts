@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/db';
 import { Leave } from '../utils/interface';

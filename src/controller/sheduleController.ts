@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable multiline-ternary */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { db } from '../model/index';
 import { BaseController } from './BaseController';
 import { checkvalidationShedule } from '../validation/ScheduleValidation';
@@ -18,6 +15,7 @@ export class SheduleController extends BaseController {
         req.body.teacherId = req.user.id;
         const classes = await classmodel.findOne({ where: { classTeacher: req.user.id }});
         const dayOfWeek = new Date(date).getDay();
+        console.log(classes);
         const teacherStd: number = classes.className as unknown as number;
         const validationResult = checkvalidationShedule(time, dayOfWeek, teacherStd);
         if (!validationResult.isValid) {

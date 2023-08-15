@@ -3,7 +3,6 @@ import { sequelize } from '../config/db';
 import { UserAttributes } from '../utils/interface';
 import { hashSync } from 'bcrypt';
 import AppError from '../utils/genrateError';
-// import { teacherClasstModel } from './teacherClassModel';
 
 export const UserModel = sequelize.define<UserAttributes>('users', {
     id: {
@@ -57,6 +56,3 @@ export const UserModel = sequelize.define<UserAttributes>('users', {
         },
     },
 });
-
-// UserModel.hasMany(teacherClasstModel, { foreignKey: 'studentId' });
-// teacherClasstModel.belongsTo(UserModel, { foreignKey: 'studentId' });

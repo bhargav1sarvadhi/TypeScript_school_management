@@ -286,3 +286,21 @@ school-management-system/
 - `GET` /api/teacher/rejectleave/1
   - Reject student leaves (Teacher only)
 
+
+## Dashboard Routes
+
+### Principal Dashboard
+- `GET` /auth/dashboard/principal
+  - Access the principal dashboard
+
+### Principal Attendance
+- `POST` /auth/dashboard/principal/attendance
+  - Post attendance in the principal dashboard
+
+### Teacher Dashboard
+- `GET` /auth/dashboard/teacher
+  - Access the teacher dashboard
+
+### Student Dashboard
+- `GET` /auth/dashboard/student
+  - Access the student dashboard

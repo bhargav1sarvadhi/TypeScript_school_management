@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { AuthContoller } from './Auth';
 import { BaseController } from './BaseController';
 import { UserController } from './userContoller';
@@ -11,7 +10,6 @@ import { StudentsController } from './studentController';
 import { SubjectController } from './subjectContoller';
 import { HolidayController } from './holidayController';
 import { LeaveController } from './leaveController';
-import { HomeworkController } from './homeworkController';
 import { DashboardController } from './dashboard/dashbordController';
 
 export {
@@ -27,6 +25,5 @@ export {
     SubjectController,
     HolidayController,
     LeaveController,
-    HomeworkController,
     DashboardController,
 };
