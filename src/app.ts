@@ -11,7 +11,7 @@ import cors from 'cors';
 import path from 'path';
 dotenv.config();
 const routes = new Routes();
-const port = process.env.PORT_SERVER || 4000;
+const port = process.env.PORT_SERVER || 8000;
 
 class App {
     app: express.Application;
